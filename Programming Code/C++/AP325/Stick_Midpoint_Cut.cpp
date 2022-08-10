@@ -8,7 +8,6 @@ using namespace std;
 
 const int MAXN = 5e4;
 const int Mod = 1e9 + 7;
-int ans = 0;
 long long cut[MAXN];
 
 long long solution( int left, int right){
