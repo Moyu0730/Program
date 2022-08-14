@@ -6,7 +6,7 @@
 #include<algorithm>
 using namespace std;
 
-// const int MAXN;
+const int MAXN = 1e8 + 50;
 const int Mod = 1e9 + 7;
 
 signed main(){
