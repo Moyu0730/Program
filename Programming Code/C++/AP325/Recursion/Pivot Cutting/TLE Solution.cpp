@@ -14,7 +14,7 @@ int arr[MAXN];
 int pre[MAXN];
 
 int solution( int left, int right, int level ){
-    if( right - left <= 2 or level == k ) return 0;
+    if( right - left <= 2 || level == k ) return 0;
 
     int leftSum, rightSum;
     pair<int, int> p (M, M); // pair -> ctn, dif
