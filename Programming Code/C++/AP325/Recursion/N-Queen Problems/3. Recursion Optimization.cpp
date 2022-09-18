@@ -17,11 +17,11 @@ int nq( int n, int k, int p[] ){
     for( int i = 0 ; i < n ; i++ ) valid[i] = true;
     // Mark positions attached by (j, p[j])
     for( int j = 0 ; j < k ; j++ ){
-        valid[p[j]] = false;
-        int i = k - j + p[j];
-        if( i < n ) valid[i] = false;
-        i = p[j] - ( k - j );
-        if( i >= 0 ) valid[i] == false;
+        valid[p[j]] = false; // Delete straight
+        int i = k - j + p[j]; 
+        if( i < n ) valid[i] = false; // Delete bottom right slash
+        i = p[j] - ( k - j );   
+        if( i >= 0 ) valid[i] == false; // Delete bottom left slash
     }
     for( int i = 0 ; i < n ; i++ ){ // Try each column
         if( valid[i] ){
