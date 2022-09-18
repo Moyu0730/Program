@@ -8,43 +8,44 @@ using namespace std;
 
 const int MAXN = 1e4 + 50;
 const int Mod = 1e9 + 7;
-int ans = -1;
 int arr[MAXN][MAXN];
 
-int nq( int n ){
-    int p[14], total = 0, result = -1;
-    for( int i = 0 ; i < n ; i++ ) p[i] = i; // First Permutation
-    do{
-        // Check Valid
-        total = 0;
-        bool valid = true;
-        for( int i = 0 ; i < n ; i++ ){
-            for( int j = i+1 ; j < n ; j++ ){
-                if( abs(p[i]-p[j]) == j - i ){ // One The Same Diagonal
-                    valid = false;
-                    break;
-                }
-            }
+// k is current row, p[] are column indexes of previous rows
+int nq( int n, int k, int p[], int emp[] ){
+    if( k >= n ){
+        int res = 0;
+        for( int i = 0 ; i < k ; i++ ) res += arr[p[i]][i];
+        return res; // No more rows, successful
+    }
+    int Max = -1;
+    bool valid[n];
+    for( int i = 0 ; i < n ; i++ ) valid[i] = true;
+    // Mark positions attached by (j, p[j])
+    for( int j = 0 ; j < k ; j++ ){
+        valid[p[j]] = false; // Delete straight
+        int i = k - j + p[j]; 
+        if( i < n ) valid[i] = false; // Delete bottom right slash
+        i = p[j] - ( k - j );   
+        if( i >= 0 ) valid[i] = false; // Delete bottom left slash
+    }
+    for( int i = 0 ; i < n ; i++ ){ // Try each column
+        if( valid[i] ){
+            p[k] = i;
+            Max = (Max, nq(n, k+1, p, emp));
         }
-        if(valid){
-            for( int i = 0 ; i < n ; i++ ) total += arr[i][p[i]];
-            result = max( result, total );
-            cout << result << 
-        }
-    } while ( next_permutation(p, p+n) ); // Until No-Next
-    return result;
+    }
+    return Max;
 }
 
 signed main(){
     ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    int n;
+    int n, p[15], emp[MAXN];
     cin >> n;
-    for( int i = 0 ; i < n ; i++ )
-        for( int j = 0 ; j < n ; j++ ) cin >> arr[i][j];
-    
-    for( int i = 1 ; i <= n ; i++ ){
-        ans = max(ans, nq(i));
+    for( int i = 0 ; i < n ; i++ ){
+        for( int j = 0 ; j < n ; j++ ){
+            cin >> arr[i][j];
+        }
     }
-    cout << ans;
+    cout << nq(n, 0, p, emp) << '\n';
     return 0;
 }
