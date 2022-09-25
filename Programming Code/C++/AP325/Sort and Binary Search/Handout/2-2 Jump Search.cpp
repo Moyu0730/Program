@@ -13,12 +13,14 @@ const int Mod = 1e9 + 7;
 
 int jump_search( int a[], int n, int x ){
     if( a[0] >= x ) return 0; // Check the first 
+    
     /*
      * if( a[0] >= x ) return x;
-     
+     *
      * Above is to deal with the situation that you want to find the maxnum value lower than x, but x is lower than a[0] 
      * It will return itself;
      */
+    
     int pos = 0;
     for( int jump = n / 2 ; jump > 0 ; jump /= 2 ){
         while( pos + jump < n && a[pos + jump] < x ){
