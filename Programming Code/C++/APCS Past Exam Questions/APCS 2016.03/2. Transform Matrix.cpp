@@ -32,26 +32,26 @@ void rRotate(){
 }
    
 int main() {
-    while ( cin >> R >> C >> M ){
-        for (int i=0; i<R; i++){
-            for (int j=0; j<C; j++){
+    while( cin >> R >> C >> M ){
+        for( int i = 0 ; i < R ; i++ ){
+            for( int j = 0 ; j < C ; j++ ){
                 cin >> a[i][j];
             }
         }
         int op[M];
-        for (int i=0; i<M; i++){
+        for( int i = 0 ; i < M ; i++ ){
             cin >> op[i];
         }
-        for (int i = M - 1; i >= 0; i--) {
-            if (op[i] == 0) rRotate();
+        for( int i = M - 1 ; i >= 0 ; i-- ){
+            if ( op[i] == 0 ) rRotate();
             else rFlip();
         }
    
         cout << R << ' ' << C << '\n';
-        for (int i=0; i<R; i++){
-            for (int j=0; j<C; j++){
+        for( int i = 0 ; i < R ; i++ ){
+            for( int j = 0 ; j < C ; j++ ){
                 cout << a[i][j];
-                if (j < C-1) cout << ' ';
+                if ( j < C-1 ) cout << ' ';
             }
             cout << '\n';
         }
