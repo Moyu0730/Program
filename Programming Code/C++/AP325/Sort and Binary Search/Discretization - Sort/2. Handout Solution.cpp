@@ -39,7 +39,7 @@ signed main(){
     for( int i = 0 ; i < n ; i++ ) a[i] = lower_bound(b, b+k,a[i]) - b; // Always found
     
     // Output
-    for( int i = 0 ; i < n ; i++ ) cout << lower_bound(b, b+k,a[i]) - b; << " ";
+    for( int i = 0 ; i < n ; i++ ) cout << a[i]; << " ";
     cout << '\n';
     return 0;
 }
