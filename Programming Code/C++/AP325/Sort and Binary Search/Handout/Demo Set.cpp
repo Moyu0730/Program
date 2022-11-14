@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     set<int> S; // a set S for storing int
     
-    cout << "Insert: ";
+    cout << "Insert : ";
     for ( int i = 0 ; i < N ; i++ ){
         int t = rand() % P;
         S.insert(t); // insert an element into S
@@ -44,7 +44,7 @@ int main() {
     it = S.lower_bound(x);
     if ( it != S.end() ) cout << "lower_bound of " << x << " is " <<  *it << "\n\n";
     else cout << "no lower_bound of " << x << "\n";
-    
+
     // find upper_bound, the first one > x
     x = ( N - 1 ) * 5;
     it = S.upper_bound(x);
